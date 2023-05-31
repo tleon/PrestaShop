@@ -1,0 +1,38 @@
+name: test actions
+on:
+  schedule:
+    - cron: '0 23 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  update-composer-modules:
+    permissions:
+      contents: write  # for peter-evans/create-pull-request to create branch
+      pull-requests: write  # for peter-evans/create-pull-request to create a PR
+    runs-on: ubuntu-latest
+    name: test actions
+    strategy:
+      fail-fast: false
+      matrix:
+        BRANCH:
+          - develop
+
+    steps:
+      - name: Update test
+        id: updated-test
+        run: |
+          touch cron_php_update_modules.txt
+          echo "toto" >> cron_php_update_modules.txt
+          echo PHP_EOL >> cron_php_update_modules.txt
+          echo "tota" >> cron_php_update_modules.txt
+          echo PHP_EOL >> cron_php_update_modules.txt
+          echo "totz" >> cron_php_update_modules.txt
+          echo PHP_EOL >> cron_php_update_modules.txt
+          FILE_CONTENT=$(cat cron_php_update_modules.txt)
+          echo PR_BODY=$FILE_CONTENT >> $GITHUB_OUTPUT
+          echo $FILE_CONTENT
+          echo $GITHUB_OUTPUT
+          rm cron_php_update_modules.txt
