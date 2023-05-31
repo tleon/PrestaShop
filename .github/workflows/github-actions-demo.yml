@@ -26,11 +26,8 @@ jobs:
         run: |
           touch cron_php_update_modules.txt
           echo "toto" >> cron_php_update_modules.txt
-          echo PHP_EOL >> cron_php_update_modules.txt
           echo "tota" >> cron_php_update_modules.txt
-          echo PHP_EOL >> cron_php_update_modules.txt
           echo "totz" >> cron_php_update_modules.txt
-          echo PHP_EOL >> cron_php_update_modules.txt
           FILE_CONTENT=$(cat cron_php_update_modules.txt)
           echo PR_BODY="$FILE_CONTENT" >> $GITHUB_OUTPUT
           echo $FILE_CONTENT
