@@ -330,6 +330,13 @@ services:
       - 'PrestaShopBundle\Form\Admin\Sell\Discount\CreateDiscountType'
       - '@PrestaShop\PrestaShop\Core\Form\IdentifiableObject\DataProvider\DiscountFormDataProvider'
 
+  prestashop.core.form.identifiable_object.builder.create_discount_free_shipping_form_builder:
+    class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Builder\FormBuilder'
+    factory: [ '@prestashop.core.form.builder.form_builder_factory', 'create' ]
+    arguments:
+      - 'PrestaShopBundle\Form\Admin\Sell\Discount\CreateFreeShippingDiscountType'
+      - '@PrestaShop\PrestaShop\Core\Form\IdentifiableObject\DataProvider\DiscountFormDataProvider'
+
   prestashop.core.form.identifiable_object.builder.title_form_builder:
     class: 'PrestaShop\PrestaShop\Core\Form\IdentifiableObject\Builder\FormBuilder'
     factory: [ '@prestashop.core.form.builder.form_builder_factory', 'create' ]

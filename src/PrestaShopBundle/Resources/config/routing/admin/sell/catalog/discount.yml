@@ -27,6 +27,15 @@ admin_discounts_create:
     _legacy_link: AdminCartRules:addcartrule
     _legacy_feature_flag: discount
 
+admin_discounts_create_free_shipping:
+  path: /free-shipping/new
+  methods: [GET, POST]
+  defaults:
+    _controller: 'PrestaShopBundle\Controller\Admin\Sell\Catalog\DiscountController::createFreeShippingAction'
+    _legacy_controller: AdminCartRules
+    _legacy_link: AdminCartRules:addcartrule
+    _legacy_feature_flag: discount
+
 admin_discount_toggle_status:
   path: /{discountId}/toggle-status
   methods: [ POST ]

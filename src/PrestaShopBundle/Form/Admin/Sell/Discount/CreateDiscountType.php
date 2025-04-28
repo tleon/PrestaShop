@@ -42,30 +42,35 @@ class CreateDiscountType extends TranslatorAwareType
                 'label' => $this->trans('On cart amount', 'Admin.Catalog.Feature'),
                 'icon' => 'shopping_cart',
                 'help' => $this->trans('Apply on total cart', 'Admin.Catalog.Feature'),
+                'route' => 'admin_discounts_create_free_shipping',
             ],
             DiscountType::PRODUCT_LEVEL => [
                 'type' => DiscountType::PRODUCT_LEVEL,
                 'label' => $this->trans('On catalog products', 'Admin.Catalog.Feature'),
                 'icon' => 'shoppingmode',
                 'help' => $this->trans('Apply on catalog products', 'Admin.Catalog.Feature'),
+                'route' => 'admin_discounts_create_free_shipping',
             ],
             DiscountType::FREE_GIFT => [
                 'type' => DiscountType::FREE_GIFT,
                 'label' => $this->trans('Free gift', 'Admin.Catalog.Feature'),
                 'icon' => 'card_giftcard',
                 'help' => $this->trans('Apply on free gift', 'Admin.Catalog.Feature'),
+                'route' => 'admin_discounts_create_free_shipping',
             ],
             DiscountType::FREE_SHIPPING => [
                 'type' => DiscountType::FREE_SHIPPING,
                 'label' => $this->trans('On free shipping', 'Admin.Catalog.Feature'),
                 'icon' => 'local_shipping',
                 'help' => $this->trans('Apply on shipping fees', 'Admin.Catalog.Feature'),
+                'route' => 'admin_discounts_create_free_shipping',
             ],
             DiscountType::ORDER_LEVEL => [
                 'type' => DiscountType::ORDER_LEVEL,
                 'label' => $this->trans('On total order', 'Admin.Catalog.Feature'),
                 'icon' => 'article',
                 'help' => $this->trans('Apply on cart and shipping fees', 'Admin.Catalog.Feature'),
+                'route' => 'admin_discounts_create_free_shipping',
             ],
         ];
 

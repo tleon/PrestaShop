@@ -23,16 +23,17 @@
  * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
  * #}
 
-{% use '@PrestaShop/Admin/TwigTemplateForm/prestashop_ui_kit_base.html.twig' %}
+{#{% use '@PrestaShop/Admin/TwigTemplateForm/prestashop_ui_kit_base.html.twig' %}#}
 
-{% block checkbox_radio_label -%}
+
+
+{#{% block content %}#}
   <label class="form-check-label">
-    {% set discountType = form.parent.vars.choices[form.vars.value].data %}
-    {{- widget|raw -}}
     <div class="discount-label">
-      {{- label is not same as(false) ? (translation_domain is same as(false) ? label|raw : label|raw) -}}
-      <small class="form-text discount-help">{{ discountType.help }}</small>
+      {{ form_start(form) }}
+      {{ form_widget(form) }}
+      {{ form_end(form) }}
     </div>
-    <i class="material-icons discount-type-icon">{{ discountType.icon }}</i>
   </label>
-{% endblock %}
+{#{% endblock %}#}
+
