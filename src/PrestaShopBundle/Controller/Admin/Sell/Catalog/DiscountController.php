@@ -175,7 +175,7 @@ class DiscountController extends PrestaShopAdminController
             'enableSidebar' => true,
             'help_link' => $this->generateSidebarLink($request->attributes->get('_legacy_controller')),
             'layoutTitle' => $this->trans('Discounts', [], 'Admin.Navigation.Menu'),
-            'lightDisplay' => true,
+            'lightDisplay' => false,
         ]);
     }
 
