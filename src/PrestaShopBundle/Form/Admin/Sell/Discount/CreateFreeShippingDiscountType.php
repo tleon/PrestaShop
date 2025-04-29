@@ -26,11 +26,13 @@
 
 namespace PrestaShopBundle\Form\Admin\Sell\Discount;
 
+use PrestaShop\PrestaShop\Core\ConstraintValidator\Constraints\DefaultLanguage;
+use PrestaShop\PrestaShop\Core\ConstraintValidator\Constraints\TypedRegex;
 use PrestaShop\PrestaShop\Core\Domain\Discount\DiscountSettings;
-use PrestaShopBundle\Form\Admin\Type\TextWithLengthCounterType;
 use PrestaShopBundle\Form\Admin\Type\TranslatableType;
 use PrestaShopBundle\Form\Admin\Type\TranslatorAwareType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
@@ -45,24 +47,24 @@ class CreateFreeShippingDiscountType extends TranslatorAwareType
             ->add('names', TranslatableType::class, [
                 'label' => $this->trans('Discount Name', 'Admin.Catalog.Feature'),
                 'label_help_box' => $this->trans('The Label help box content is yet to be defined', 'Admin.Catalog.Help'),
-                'required' => false,
-                'type' => TextWithLengthCounterType::class,
+                'required' => true,
+                'type' => TextType::class,
+                'constraints' => [
+                    new DefaultLanguage(),
+                ],
                 'help' => $this->trans(
                     'The Label help box content is yet to be defined',
                     'Admin.Catalog.Help'
                 ),
                 'options' => [
-                    'input' => 'text',
-                    'input_attr' => [
-                        'class' => 'serp-watched-title',
-                    ],
-                    'max_length' => DiscountSettings::MAX_NAME_LENGTH,
-                    'position' => 'after',
                     'constraints' => [
+                        new TypedRegex([
+                            'type' => 'generic_name',
+                        ]),
                         new Length([
                             'max' => DiscountSettings::MAX_NAME_LENGTH,
                             'maxMessage' => $this->trans(
-                                'This field cannot be longer than %limit% characters.',
+                                'This field cannot be longer than %limit% characters',
                                 'Admin.Notifications.Error',
                                 ['%limit%' => DiscountSettings::MAX_NAME_LENGTH]
                             ),
@@ -71,10 +73,6 @@ class CreateFreeShippingDiscountType extends TranslatorAwareType
                 ],
                 'modify_all_shops' => true,
             ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Submit',
-                'attr' => ['class' => 'btn btn-primary'],
-            ]);
         ;
     }
 
