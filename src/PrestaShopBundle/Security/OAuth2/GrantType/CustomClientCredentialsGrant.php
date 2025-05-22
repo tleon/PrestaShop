@@ -51,7 +51,7 @@ class CustomClientCredentialsGrant extends ClientCredentialsGrant
         ClientEntityInterface $client,
         $userIdentifier,
         array $scopes = []
-    ) {
+    ): AccessTokenEntityInterface {
         /** @var Client $client */
         if ($client->getLifetime() !== null) {
             $accessTokenTTL = DateInterval::createFromDateString($client->getLifetime() . ' seconds');
@@ -76,7 +76,7 @@ class CustomClientCredentialsGrant extends ClientCredentialsGrant
      *
      * @throws OAuthServerException
      */
-    protected function getRequestParameter($parameter, ServerRequestInterface $request, $default = null)
+    protected function getRequestParameter($parameter, ServerRequestInterface $request, $default = null): ?string
     {
         // Any other parameter is not modified
         if ($parameter !== 'scope') {

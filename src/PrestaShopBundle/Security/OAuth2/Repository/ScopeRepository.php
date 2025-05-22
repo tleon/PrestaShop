@@ -76,7 +76,8 @@ class ScopeRepository implements ScopeRepositoryInterface
         ClientEntityInterface $clientEntity,
         $userIdentifier = null,
         $authCodeId = null
-    ) {
+    ): array
+    {
         $finalizedScopes = [
             new ScopeEntity('is_authenticated'),
         ];
